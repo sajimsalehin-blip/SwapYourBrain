@@ -1,0 +1,27 @@
+
+digraph G {
+  graph [rankdir=LR, bgcolor="#070912", pad=0.3, nodesep=0.45, ranksep=0.7, fontname="Arial"];
+  node [shape=box, style="rounded,filled", fillcolor="#11172a", color="#8b5cf6", fontcolor="white", fontname="Arial", margin="0.12,0.08"];
+  edge [color="#64748b", fontcolor="#94a3b8", arrowsize=0.7];
+  Users [label="Users\nPK user_id\nUNIQUE username, email"];
+  UserProfiles [label="UserProfiles\nPK profile_id\nFK user_id"];
+  SkillCategories [label="SkillCategories\nPK category_id"];
+  Skills [label="Skills\nPK skill_id\nFK category_id"];
+  UserSkills [label="UserSkills\nPK user_skill_id\nFK user_id, skill_id"];
+  SkillRequests [label="SkillRequests\nPK request_id\nFK sender, receiver\nFK requested/offered skill"];
+  SkillMatches [label="SkillMatches\nPK match_id\nFK user1, user2\nFK skill1, skill2"];
+  LearningSessions [label="LearningSessions\nPK session_id\nFK request, teacher, learner, skill"];
+  Messages [label="Messages\nPK message_id\nFK sender, receiver"];
+  Reviews [label="Reviews\nPK review_id\nFK session, reviewer, reviewed"];
+  Achievements [label="Achievements\nPK achievement_id\nFK user_id"];
+  Admins [label="Admins\nPK admin_id\nFK user_id"];
+  Users -> UserProfiles [label="1:1"];
+  SkillCategories -> Skills [label="1:N"];
+  Users -> UserSkills [label="1:N"]; Skills -> UserSkills [label="1:N"];
+  Users -> SkillRequests [label="sender/receiver"]; Skills -> SkillRequests [label="requested/offered"];
+  Users -> SkillMatches [label="user1/user2"]; Skills -> SkillMatches [label="skill1/skill2"];
+  SkillRequests -> LearningSessions [label="1:N"]; Users -> LearningSessions [label="teacher/learner"]; Skills -> LearningSessions [label="1:N"];
+  Users -> Messages [label="sender/receiver"];
+  LearningSessions -> Reviews [label="1:N"]; Users -> Reviews [label="reviewer/reviewed"];
+  Users -> Achievements [label="1:N"]; Users -> Admins [label="1:0..1"];
+}
