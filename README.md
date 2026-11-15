@@ -95,18 +95,6 @@ The project uses PDO prepared statements, `password_hash()`, `password_verify()`
 
 **Login fails:** import the supplied SQL again so the generated password hashes are restored.
 
-## Viva focus
-
-Be prepared to explain:
-1. Why `UserSkills` is necessary.
-2. The PK/FK relationships.
-3. Why requests reference two users and two skills.
-4. How `SkillMatches` represents compatibility.
-5. Why prepared statements are used.
-6. How CRUD is implemented.
-7. How `JOIN`, `GROUP BY`, `COUNT`, `AVG`, `LIKE` and `HAVING` are used.
-8. Why there are exactly 12 tables.
-=======
 # SwapYourBrain
 Skill Exchanging website 
 >>>>>>> d42e9f37f1745e91e3a89ddb1e93e13e11f756de
